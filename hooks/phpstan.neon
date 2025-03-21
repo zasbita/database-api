@@ -1,0 +1,31 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+
+    #errorFormat: raw
+
+    paths:
+        - app/
+        - config/
+        - routes/
+
+    # Level 9 is the highest level
+    level: 9
+
+    ignoreErrors:
+        - '#PHPDoc tag @var#'
+        -
+            identifier: property.notFound
+        -
+            identifier: larastan.noEnvCallsOutsideOfConfig
+
+    universalObjectCratesClasses:
+            - Illuminate\Http\Resources\Json\JsonResource
+
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php
+#
+#    checkMissingIterableValueType: false
+    treatPhpDocTypesAsCertain: false
